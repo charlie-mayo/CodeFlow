@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# macOS junk
+.DS_Store
+
+# Logs and env
+*.log
+.env
+
+# Local AI assistant context, not for the public repo
+CLAUDE.md

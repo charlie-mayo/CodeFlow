@@ -1,0 +1,9 @@
+{
+  "name": "codeflow",
+  "version": "0.1.0",
+  "description": "A command line program that walks you through a daily study structure.",
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/index.ts"
+  }
+}
