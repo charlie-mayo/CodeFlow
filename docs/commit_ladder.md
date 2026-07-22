@@ -17,7 +17,7 @@ The build stays runnable from commit 1 on. Every rung leaves something you can r
 ## Phase 1 — Tested primitives (small building blocks, each with its tests)
 
 **2. `feat: add stopwatch`**
-A `src/stopwatch.ts` with start, elapsed, and a format helper that turns seconds into `HH:MM:SS`. `index.ts` demos it.
+A `src/stopwatch.ts` with start, elapsed, and a format helper that turns milliseconds into `HH:MM:SS`. `index.ts` demos it.
 *Teaches: modules, imports, and a first class or set of typed functions.*
 
 **3. `test: add stopwatch unit tests`**
