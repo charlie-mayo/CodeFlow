@@ -1,9 +1,13 @@
-import { Stopwatch, format } from "./stopwatch"
+import * as readline from "node:readline";
+import { ask } from "./prompt";
 
-console.log("CodeFlow is running.");
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
 
-const stopwatch = new Stopwatch();
-stopwatch.start();
+const project = await ask(rl, "Which project? ");
 
-console.log("Time elapsed after program start: ", format(stopwatch.elapsed()));
-console.log("Formatter check (expected: 01:02:05): ", format(3725000));
+console.log("User's input was: " + project);
+
+rl.close();
