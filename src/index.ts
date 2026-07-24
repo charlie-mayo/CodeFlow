@@ -1,13 +1,12 @@
-import * as readline from "node:readline";
-import { ask } from "./prompt";
+import { test } from "vitest";
+import { buildList, renderList, markDone, replacePending } from "./list";
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
 
-const project = await ask(rl, "Which project? ");
+let testList = buildList(["book haircut", "walk Archie", "cook dinner"]);
+console.log("Before marking:\n" + renderList(testList) + "\n");
 
-console.log("User's input was: " + project);
+testList = markDone(testList, [1, 2]);
+console.log("After marking:\n" + renderList(testList) + "\n");
 
-rl.close();
+testList = replacePending(testList, ["shave"]);
+console.log("After replacing pends:\n" + renderList(testList));
