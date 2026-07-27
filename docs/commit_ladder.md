@@ -46,6 +46,10 @@ A `src/session.ts` that loops reading a command, recognizing only `[s]tatus` and
 Bring the stopwatch in. `status` now shows real elapsed time and `done` logs it.
 *Teaches: reusing a module inside a loop.*
 
+**8b. `feat: make format() return human-readable durations`**
+Inserted after commit 8 (the flow while building, not a renumber). Rework `format()` so it returns a spoken-style phrase like `3 hours, 12 minutes, and 45 seconds`, `1 hour, 15 minutes`, or `13 seconds`, instead of `HH:MM:SS`. Omit any zero part, pluralize each unit (`1 hour` vs `2 hours`), join with commas and an `and` before the last part, and decide the zero case (likely `0 seconds`). Rewrite the commit 3 stopwatch tests to the new expected strings, same edges (zero, sub-minute, the 60s and 3600s rollovers, the multi-hour case). Drop the now-redundant `(HH:MM:SS)` labels from the session's `status`/`done` messages since the string self-describes.
+*Teaches: conditional string building, pluralization, assembling a phrase with an array and `join`, and rewriting tests alongside a deliberate behavior change. QA: regression testing.*
+
 **9. `feat: add pause and resume`**
 A `[p]ause` command that freezes the stopwatch and resumes on a second press, so the work total stays honest through short interruptions. The frozen state lives in the stopwatch.
 *Teaches: mutable state over time and keeping the clock correct.*
