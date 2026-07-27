@@ -1,12 +1,10 @@
-import { test } from "vitest";
-import { buildList, renderList, markDone, replacePending } from "./list";
+import * as readline from "node:readline";
+import { runSession } from "./session";
 
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
 
-let testList = buildList(["book haircut", "walk Archie", "cook dinner"]);
-console.log("Before marking:\n" + renderList(testList) + "\n");
-
-testList = markDone(testList, [1, 2]);
-console.log("After marking:\n" + renderList(testList) + "\n");
-
-testList = replacePending(testList, ["shave"]);
-console.log("After replacing pends:\n" + renderList(testList));
+await runSession(rl);
+rl.close();
