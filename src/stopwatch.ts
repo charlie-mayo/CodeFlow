@@ -1,12 +1,34 @@
 export class Stopwatch {
   private startTime: number = 0;
+  private pausedStart: number = 0;
+  private pausedTime: number = 0;
+  private isPaused: boolean = false;
 
   public start(): void {
     this.startTime = Date.now();
   }
 
   public elapsed(): number {
-    return (Date.now() - this.startTime);
+    if (this.isPaused) {
+      return ((this.pausedStart - this.startTime) - this.pausedTime);
+    } else {
+      return ((Date.now() - this.startTime) - this.pausedTime);
+    }
+  }
+
+  public pause(): void {
+    this.pausedStart = Date.now();
+    this.isPaused = true;
+  }
+
+  public play(): void {
+    const result = Date.now() - this.pausedStart;
+    this.pausedTime += result;
+    this.isPaused = false;
+  }
+
+  public isItPaused(): boolean {
+    return this.isPaused;
   }
 }
 
