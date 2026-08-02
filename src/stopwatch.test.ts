@@ -1,5 +1,14 @@
-import { test, expect } from "vitest";
-import { format } from "./stopwatch";
+import { test, expect, vi, beforeEach, afterEach } from "vitest";
+import { format, Stopwatch } from "./stopwatch";
+
+beforeEach(() => {
+  vi.useFakeTimers();
+});
+
+afterEach(() => {
+  vi.useRealTimers();
+});
+
 
 test(`formats zero as "0 seconds"`, () => {
   expect(format(0)).toBe("0 seconds");
@@ -23,4 +32,29 @@ test(`formats 3600000 as "1 hour, 0 minutes"`, () => {
 
 test(`formats 360000000 as "100 hours, 0 minutes"`, () => {
   expect(format(360000000)).toBe("100 hours, 0 minutes");
+});
+
+test("elapsed() excludes a paused timespan", () => {
+  const stopwatch = new Stopwatch();
+  stopwatch.start();
+
+  vi.advanceTimersByTime(10000);
+  stopwatch.pause();
+
+  vi.advanceTimersByTime(40000);
+  stopwatch.play();
+
+  expect(stopwatch.elapsed()).toBe(10000);
+});
+
+test("elapsed() stays frozen while paused", () => {
+  const stopwatch = new Stopwatch();
+  stopwatch.start();
+
+  vi.advanceTimersByTime(10000);
+  stopwatch.pause();
+
+  vi.advanceTimersByTime(40000);
+
+  expect(stopwatch.elapsed()).toBe(10000);
 });
