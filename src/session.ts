@@ -18,9 +18,9 @@ export async function runSession(rl: Interface): Promise<void> {
     } else if (command === "pause") {
       if (stopwatch.isItPaused() === false) {
         stopwatch.pause();
-        console.log(`\n[paused] Clock frozen at ${format(stopwatch.elapsed())}. Type "resume" when you're back.\n`);
+        console.log(`\n[paused] Clock frozen at ${format(stopwatch.elapsed())}. Type 'resume' when you're back.\n`);
       } else {
-        console.log(`\n[paused] Already on pause. Type "resume" instead.\n`);
+        console.log(`\n[paused] Already on pause. Type 'resume' instead.\n`);
       }
     } else if (command === "resume") {
       if (stopwatch.isItPaused()) {
@@ -29,8 +29,16 @@ export async function runSession(rl: Interface): Promise<void> {
       } else {
         console.log(`\n[resume] The clock isn't paused, it's already running.\n`);
       }
+    } else if (command === "help") {
+      console.log(`
+[help] Session commands:
+  status   how long this session has been running
+  pause    freeze the clock for a short break
+  resume   unfreeze the clock to resume work
+  done     end the session
+      `)
     } else {
-      console.log(`\nOop, I don't know that command. Try typing "status" or "done", or "pause"/"resume" .\n`);
+      console.log(`\nOop, I don't know that command. Type 'help' to see your options.\n`);
     }
   }
 }
