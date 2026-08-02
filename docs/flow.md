@@ -25,10 +25,10 @@ The list persists between days. It is stored in a file in a central CodeFlow dat
 ## Mid-session commands
 
 ```
-[c]heck-in   answer "climbing or coasting?" after your phone alarm
 [p]ause      stop the stopwatch for a short interruption (resume with the same command)
 [d]one       end the session, log the time, start a break
 [s]tatus     show session elapsed and total work today
+[h]elp       list the session commands and what each one does
 ```
 
 `done` is the only way to end a session. Ending a session always flows into a break. From the break you either start another session or wrap up the day. There is no separate `break` command.
@@ -91,7 +91,7 @@ $ study
 
 > Timer set? Press ENTER to start the stopwatch...
   Stopwatch running.  00:00
-  Commands: [c]heck-in  [p]ause  [d]one  [s]tatus
+  Commands: [p]ause  [d]one  [s]tatus  [h]elp
 ```
 
 Status:
@@ -106,16 +106,6 @@ Pause and resume:
   Paused at 00:41:12. Type 'p' again to resume.
     p
   Resumed. Stopwatch running.
-```
-
-Check-in (after the phone alarm):
-```
-    c
-  Check-in. Climbing or coasting? [climbing / coasting]
-    climbing
-  Good. Keep the wave. Set another phone timer if you like.
-    coasting
-  Wrap up and type 'd' to end the session while there's gas left.
 ```
 
 Done:

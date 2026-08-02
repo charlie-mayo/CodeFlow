@@ -58,12 +58,8 @@ A `[p]ause` command that freezes the stopwatch and resumes on a second press, so
 Prove that elapsed time excludes the frozen span, and confirm the stopwatch tests from commit 3 still pass after the change.
 *Teaches: testing stateful logic, and why a green suite matters when you change old code. QA: unit and regression testing.*
 
-**11. `feat: add the check-in`**
-A `[c]heck-in` command that asks "climbing or coasting?" and nudges you toward `done` if coasting.
-*Teaches: branching on input.*
-
-**11b. `feat: add a help command`**
-Inserted after commit 11 (a flow refinement while building, not a renumber). A `[h]elp` command that prints a short menu of the session commands and what each one does. Placed after the check-in on purpose, so the menu is written once against the finished set of session commands, `status`, `pause`, `resume`, `check-in`, and `done`, with nothing left to add to it later.
+**11. `feat: add a help command`**
+A `[h]elp` command that prints a short menu of the session commands and what each one does. Placed last on purpose, so the menu is written once against the finished set of session commands, `status`, `pause`, `resume`, and `done`, with nothing left to add to it later.
 *Teaches: consolidating a feature's surface into in-program help text.*
 
 ## Phase 3 — Breaks and the day's rhythm
