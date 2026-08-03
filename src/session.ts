@@ -5,7 +5,16 @@ import { Stopwatch, format } from "./stopwatch";
 
 export async function runSession(rl: Interface): Promise<void> {
   const stopwatch = new Stopwatch();
+
+  console.log(`
+------------------ SESSION ------------------
+>> Set a 50-75 min timer on your phone now. <<
+When it sounds, ask yourself if you should take a break or keep going.
+`);
+
+  await ask(rl, "Timer set? Press ENTER to start the session timer...");
   stopwatch.start();
+  console.log(`\nClock's running. Type 'help' for commands.\n`);
 
   let running = true;
   while (running) {
@@ -32,10 +41,11 @@ export async function runSession(rl: Interface): Promise<void> {
     } else if (command === "help") {
       console.log(`
 [help] Session commands:
-  status   how long this session has been running
-  pause    freeze the clock for a short break
-  resume   unfreeze the clock to resume work
-  done     end the session
+------------------------
+status   how long this session has been running
+pause    freeze the clock for a short break
+resume   unfreeze the clock to resume work
+done     end the session
       `)
     } else {
       console.log(`\nOop, I don't know that command. Type 'help' to see your options.\n`);
